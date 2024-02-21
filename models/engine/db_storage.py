@@ -44,12 +44,12 @@ class DBStorage:
             for class_type in all_classes:
                 query = self.__session.query(class_type)
                 for obj in query.all():
-                    obj_key = '{}.{}'.format(obj.__class__.__name__, obj.id)
+                    obj_key = f"{obj.__class__.__name__}.{obj.id}"
                     objects[obj_key] = obj
         else:
             query = self.__session.query(cls)
             for obj in query.all():
-                obj_key = f'{obj.__class__.__name__}.{obj.id}'
+                obj_key = f"{obj.__class__.__name__}.{obj.id}"
                 objects[obj_key] = obj
         return objects
 
@@ -68,9 +68,9 @@ class DBStorage:
                 self.__session.add(obj)
                 self.__session.flush()
                 self.__session.refresh(obj)
-            except Exception as ex:
+            except Exception as e:
                 self.__session.rollback()
-                raise ex
+                raise e
 
     def save(self):
         """Commits the session changes to database"""

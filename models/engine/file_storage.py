@@ -34,7 +34,7 @@ class FileStorage:
             return filtered_dict
 
     def delete(self, obj=None):
-        """Removes an object from the storage dictionary"""
+        """Deletes an object from the storage dictionary"""
         if obj is not None:
             obj_key = obj.to_dict()['__class__'] + '.' + obj.id
             if obj_key in self.__objects.keys():
