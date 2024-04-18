@@ -7,16 +7,13 @@ $nginx_conf = "server {
     add_header X-Served-By ${hostname};
     root   /var/www/html;
     index  index.html index.htm;
-
     location /hbnb_static {
         alias /data/web_static/current;
         index index.html index.htm;
     }
-
     location /redirect_me {
-        return 301 http://google.com/;
+        return 301 https://th3-gr00t.tk;
     }
-
     error_page 404 /404.html;
     location /404 {
       root /var/www/html;
@@ -78,7 +75,7 @@ file { '/var/www/html/index.html':
 
 file { '/var/www/html/404.html':
   ensure  => 'present',
-  content => "This is not a page\n"
+  content => "Ceci n'est pas une page\n"
 } ->
 
 file { '/etc/nginx/sites-available/default':
